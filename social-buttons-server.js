@@ -18,7 +18,7 @@ app.all('/*', function(req, res, next) {
     'https://www.restorethefourthsf.com',
     'https://shameonfeinstein.org',
     'https://www.shameonfeinstein.org',
-    'https://test.shameonfeinstein.org',
+    'http://test.shameonfeinstein.org',
     // 'null' //Uncomment to test without a webserver
   ];
 if(allowedHost.indexOf(req.headers.origin) !== -1 ) {
