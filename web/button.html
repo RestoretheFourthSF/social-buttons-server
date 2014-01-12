@@ -14,10 +14,10 @@
         <div id="sgplus"></div>
       </a>
   </div>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="jquery.min.js"></script>
 
   <script type="text/javascript">
-    $.ajax('http://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://rally.stopwatching.us', {
+    $.ajax('http://127.0.0.1:5000/?networks=facebook,twitter,googleplus&url=https://shameonfeinstein.org', {
       success: function (res, err) {
         $.each(res, function(network, value){
           $('#'+network).attr('data-count', value);

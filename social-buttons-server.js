@@ -15,7 +15,11 @@ app.all('/*', function(req, res, next) {
  
   var allowedHost = [
     'https://restorethefourthsf.com',
-    'https://shameonfeinstein.org'
+    'https://www.restorethefourthsf.com',
+    'https://shameonfeinstein.org',
+    'https://www.shameonfeinstein.org',
+    'https://test.shameonfeinstein.org',
+    // 'null' //Uncomment to test without a webserver
   ];
 if(allowedHost.indexOf(req.headers.origin) !== -1 ) {
  res.header("Access-Control-Allow-Origin", "*");
@@ -50,11 +54,7 @@ app.get('/', function(req, res) {
       return;
     }
   }
-  console.log(url.indexOf('shameonfeinstein.org'));
-  if((url.indexOf('shameonfeinstein.org') === -1) || (url.indexOf('restorethefourthsf.com') === -1)){
-    res.send({error: "Please install this open source module on your own heroku server"})
-    return;
-  }
+
   // Create an object of callbacks for each of the requested networks
   // It is then passed to the async library to executed in parallel 
   // All results will be sent to the browser on completion.
@@ -84,6 +84,7 @@ var networkCallbacks = {
       .set('Accept', 'application/json')
       .end(function(data){
         var count = data.body.count;
+        console.log("Twitter: " + count);
         callback(null, count);
       });
   },
@@ -99,6 +100,7 @@ var networkCallbacks = {
       } else {
         count = 0;
       }
+      console.log("FB: " + count);
       callback(null, count);
     });
   },
@@ -115,6 +117,7 @@ var networkCallbacks = {
         } else {
           count = 0;
         }
+        console.log("Google+: " + count);
         callback(null, count);
       });
   } 
