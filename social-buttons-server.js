@@ -14,16 +14,8 @@ app.all('/*', function(req, res, next) {
   // Allow the request to be pulled cross domain
  
   var allowedHost = [
-    'http://dev.stopwatching.us',
-    'http://rally.stopwatching.us',
-    'http://2.stopwatching.us',
-    'http://localhost:4000',
-    'https://dev.stopwatching.us',
-    'https://rally.stopwatching.us',
-    'https://2.stopwatching.us',
-    'https://localhost:4000',
-    'https://thedaywefightback.org',
-    'http://thedaywefightback.org'
+    'https://restorethefourthsf.com',
+    'https://shameonfeinstein.org'
   ];
 if(allowedHost.indexOf(req.headers.origin) !== -1 ) {
  res.header("Access-Control-Allow-Origin", "*");
@@ -54,12 +46,12 @@ app.get('/', function(req, res) {
   } else {
     url = req.header('Referer');
     if(typeof url === 'undefined') {
-      res.send({error: 'You asked for the referring urls stats but there is no referring url, try specify one manually (&url=http://1984day.com)'});
+      res.send({error: 'You asked for the referring urls stats but there is no referring url, try specify one manually (&url=https://shameonfeinstein.org)'});
       return;
     }
   }
-  console.log(url.indexOf('stopwatching.us'));
-  if(url.indexOf('stopwatching.us') === -1){
+  console.log(url.indexOf('shameonfeinstein.org'));
+  if((url.indexOf('shameonfeinstein.org') === -1) || (url.indexOf('restorethefourthsf.com') === -1)){
     res.send({error: "Please install this open source module on your own heroku server"})
     return;
   }
